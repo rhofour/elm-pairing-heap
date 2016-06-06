@@ -1,7 +1,7 @@
 {
-    "version": "1.0.0",
+    "version": "2.0.0",
     "summary": "A simple pairing heap implementation usable as a priority queue.",
-    "repository": "https://github.com/rhofour/elm-pairing-heap.git",
+    "repository": "https://github.com/evanshort73/elm-pairing-heap.git",
     "license": "BSD3",
     "source-directories": [
         "."
@@ -10,8 +10,8 @@
       "PairingHeap"
     ],
     "dependencies": {
-        "deadfoxygrandpa/elm-test": "3.0.1 <= v < 4.0.0",
-        "elm-lang/core": "3.0.0 <= v < 4.0.0"
+        "elm-community/elm-test": "1.1.0 <= v < 2.0.0",
+        "elm-lang/core": "4.0.0 <= v < 5.0.0"
     },
-    "elm-version": "0.16.0 <= v < 0.17.0"
+    "elm-version": "0.17.0 <= v < 0.18.0"
 }

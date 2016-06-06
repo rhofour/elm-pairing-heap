@@ -1,10 +1,7 @@
-module Main (..) where
-
 import PairingHeap exposing (..)
 import ElmTest exposing (..)
 import Maybe exposing (..)
 import String
-import Graphics.Element exposing (Element)
 
 
 h1 =
@@ -55,8 +52,8 @@ tests =
                 , defaultTest (assertEqual (heapsort [ 2, 3, 1 ]) [ 1, 2, 3 ])
                 , defaultTest (assertEqual (heapsort [ 5, 2, 3, 1, 4 ]) [ 1, 2, 3, 4, 5 ])
                 ]
-            , test "Merge test" (assertEqual 
-                (toSortedList (merge h3 h5)) 
+            , test "Merge test" (assertEqual
+                (toSortedList (merge h3 h5))
                 [ (1, ()), (2, ()), (5, ()), (7, ()), (10, ()) ])
             ]
         ]
@@ -67,6 +64,6 @@ heapsort =
     (List.map (\x -> (x, ()))) >> fromList >> toSortedList >> (List.map (\(k,_) -> k))
 
 
-main : Element
+main : Program Never
 main =
-    elementRunner tests
+    runSuite tests
