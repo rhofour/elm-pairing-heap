@@ -1,4 +1,4 @@
-module PairingHeapTests (..) where
+module PairingHeapTests exposing (..)
 
 import PairingHeap exposing (..)
 import ElmTest exposing (..)

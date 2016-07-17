@@ -1,4 +1,4 @@
-module PairingHeap (PairingHeap, empty, findMin, merge, insert, deleteMin, fromList, toSortedList) where
+module PairingHeap exposing (PairingHeap, empty, findMin, merge, insert, deleteMin, fromList, toSortedList)
 
 {-| This is a simple pairing heap implementation written in Elm usable as a priority queue. This code is
 based heavily on the pseudocode available at [the Wikipedia page](https://en.wikipedia.org/wiki/Pairing_heap).
