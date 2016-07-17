@@ -1,5 +1,5 @@
 {
-    "version": "2.0.0",
+    "version": "1.0.1",
     "summary": "A simple pairing heap implementation usable as a priority queue.",
     "repository": "https://github.com/rhofour/elm-pairing-heap.git",
     "license": "BSD3",
