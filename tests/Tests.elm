@@ -35,24 +35,24 @@ all =
             [ test "Min is Nothing" <| \() -> (Expect.equal (findMin empty) Nothing)
             , describe
                 "Merge is identity"
-                [ test "" <| \() -> (Expect.equal (merge empty empty) empty)
-                , test "" <| \() -> (Expect.equal (merge empty h1) h1)
-                , test "" <| \() -> (Expect.equal (merge h2 empty) h2)
-                , test "" <| \() -> (Expect.equal (merge empty h3) h3)
+                [ test "merge empty empty = empty" <| \() -> (Expect.equal (merge empty empty) empty)
+                , test "merge empty h1 = h1" <| \() -> (Expect.equal (merge empty h1) h1)
+                , test "merge h2 empty = h2" <| \() -> (Expect.equal (merge h2 empty) h2)
+                , test "merge h3 empty = h3" <| \() -> (Expect.equal (merge empty h3) h3)
                 ]
-            , test "" <| \() -> (Expect.equal (findMin (insert ( 42, True ) empty)) (Just ( 42, True )))
-            , test "" <| \() -> (Expect.equal (deleteMin (insert ( 42, False ) empty)) empty)
+            , test "it finds the minimal value" <| \() -> (Expect.equal (findMin (insert ( 42, True ) empty)) (Just ( 42, True )))
+            , test "it deletes the minimal value" <| \() -> (Expect.equal (deleteMin (insert ( 42, False ) empty)) empty)
             ]
         , describe
             "Non-empty Tests"
             [ describe
                 "Heapsort"
                 -- To test insert and deleteMin
-                [ test "" <| \() -> (Expect.equal (heapsort []) [])
-                , test "" <| \() -> (Expect.equal (heapsort [ 1, 2, 3 ]) [ 1, 2, 3 ])
-                , test "" <| \() -> (Expect.equal (heapsort [ 2, 3, 1 ]) [ 1, 2, 3 ])
-                , test "" <| \() -> (Expect.equal (heapsort [ 2, 3, 1 ]) [ 1, 2, 3 ])
-                , test "" <| \() -> (Expect.equal (heapsort [ 5, 2, 3, 1, 4 ]) [ 1, 2, 3, 4, 5 ])
+                [ test "it heapsorts empty lists" <| \() -> (Expect.equal (heapsort []) [])
+                , test "it heapsorts sorted lists" <| \() -> (Expect.equal (heapsort [ 1, 2, 3 ]) [ 1, 2, 3 ])
+                , test "it heapsorts sorted and descending lists" <| \() -> (Expect.equal (heapsort [ 2, 3, 1 ]) [ 1, 2, 3 ])
+                , test "it heapsorts unsorted lists 1" <| \() -> (Expect.equal (heapsort [ 2, 3, 1 ]) [ 1, 2, 3 ])
+                , test "it heapsorts unsorted lists 2" <| \() -> (Expect.equal (heapsort [ 5, 2, 3, 1, 4 ]) [ 1, 2, 3, 4, 5 ])
                 ]
             , test
                 "Merge test"
