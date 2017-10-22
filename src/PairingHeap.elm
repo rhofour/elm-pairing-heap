@@ -3,14 +3,21 @@ module PairingHeap exposing (PairingHeap, empty, findMin, merge, insert, deleteM
 {-| This is a simple pairing heap implementation written in Elm usable as a priority queue. This code is
 based heavily on the pseudocode available at [the Wikipedia page](https://en.wikipedia.org/wiki/Pairing_heap).
 
+
 # Type and Constructor
+
 @docs PairingHeap, empty
 
+
 # Operations
+
 @docs insert, merge, findMin, deleteMin
 
+
 # Convenience functions
+
 @docs fromList, toSortedList
+
 -}
 
 import Maybe exposing (Maybe(..))
@@ -35,20 +42,22 @@ empty =
 Complexity: O(1)
 
     findMin (fromList [(10, ()), (3, ()), (8, ())]) == Just 3
+
 -}
-findMin : PairingHeap comparable a -> Maybe (comparable, a)
+findMin : PairingHeap comparable a -> Maybe ( comparable, a )
 findMin x =
     case x of
         Empty ->
             Nothing
 
         Heap k v _ ->
-            Just (k, v)
+            Just ( k, v )
 
 
 {-| Merges two `PairingHeap`s together into one new heap containing all of the key-value pairs from both inputs.
 
 Complexity: O(1)
+
 -}
 merge : PairingHeap comparable a -> PairingHeap comparable a -> PairingHeap comparable a
 merge heap1 heap2 =
@@ -69,9 +78,10 @@ merge heap1 heap2 =
 {-| Inserts a new element into a `PairingHeap`.
 
 Complexity: O(1)
+
 -}
-insert : (comparable, a) -> PairingHeap comparable a -> PairingHeap comparable a
-insert (k, v) heap =
+insert : ( comparable, a ) -> PairingHeap comparable a -> PairingHeap comparable a
+insert ( k, v ) heap =
     merge (Heap k v []) heap
 
 
@@ -79,6 +89,7 @@ insert (k, v) heap =
 This will return an empty heap if given an empty heap as input.
 
 Complexity: O(log n)
+
 -}
 deleteMin : PairingHeap comparable a -> PairingHeap comparable a
 deleteMin heap =
@@ -112,8 +123,9 @@ mergePairs heaps =
 {-| This function turns a list of key-value pairs into a `PairingHeap`.
 
 Complexity: O(n)
+
 -}
-fromList : List (comparable, a) -> PairingHeap comparable a
+fromList : List ( comparable, a ) -> PairingHeap comparable a
 fromList =
     List.foldl insert empty
 
@@ -121,12 +133,13 @@ fromList =
 {-| This function turns a `PairingHeap` into a sorted list of key-value pairs.
 
 Complexity: O(n log n)
+
 -}
-toSortedList : PairingHeap comparable a -> List (comparable, a)
+toSortedList : PairingHeap comparable a -> List ( comparable, a )
 toSortedList heap =
     case heap of
         Empty ->
             []
 
         Heap k v _ ->
-            (k, v) :: (toSortedList (deleteMin heap))
+            ( k, v ) :: (toSortedList (deleteMin heap))
